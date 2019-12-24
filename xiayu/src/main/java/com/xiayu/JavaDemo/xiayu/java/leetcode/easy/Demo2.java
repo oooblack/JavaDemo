@@ -1,4 +1,4 @@
-package com.xiayu.JavaDemo.xiayu.java.easy;
+package com.xiayu.JavaDemo.xiayu.java.leetcode.easy;
 
 import org.junit.Test;
 

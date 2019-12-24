@@ -23,12 +23,9 @@ public class ExecutorDemo {
     @Test
     public void newCachedThreadPoolDemo() {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.execute(new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+        executorService.execute(new Thread(() -> {
 
-                    }
-                })
+        })
 
 
         );
@@ -38,24 +35,18 @@ public class ExecutorDemo {
     public void newFixedThreadPoolDemo() {
         //ExecutorService executorService = Executors.newFixedThreadPool(1);
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        executorService.execute(new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < 10000; i++) {
-                            System.out.println("1---" + i);
-                        }
-                    }
-                })
+        executorService.execute(new Thread(() -> {
+            for (int i = 0; i < 10000; i++) {
+                System.out.println("1---" + i);
+            }
+        })
         );
-        executorService.execute(new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("t2开始运行");
-                        for (int i = 0; i < 10000; i++) {
-                            System.out.println("2---" + i);
-                        }
-                    }
-                })
+        executorService.execute(new Thread(() -> {
+            System.out.println("t2开始运行");
+            for (int i = 0; i < 10000; i++) {
+                System.out.println("2---" + i);
+            }
+        })
         );
         for (int i = 0; i < 1000000; i++) {
             System.out.print("");
@@ -68,43 +59,31 @@ public class ExecutorDemo {
     @Test
     public void newSingleThreadPoolDemo() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 10000; i++) {
-                    System.out.println("1---" + i);
-                }
+        executorService.execute(() -> {
+            for (int i = 0; i < 10000; i++) {
+                System.out.println("1---" + i);
             }
         });
-        executorService.execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        System.out.println("t2开始运行");
-                                        for (int i = 0; i < 10000; i++) {
-                                            System.out.println("2---" + i);
-                                        }
-                                    }
-                                }
+        executorService.execute(() -> {
+            System.out.println("t2开始运行");
+            for (int i = 0; i < 10000; i++) {
+                System.out.println("2---" + i);
+            }
+        }
         );
-        executorService.execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        System.out.println("t3开始运行");
-                                        for (int i = 0; i < 10000; i++) {
-                                            System.out.println("3---" + i);
-                                        }
-                                    }
-                                }
+        executorService.execute(() -> {
+            System.out.println("t3开始运行");
+            for (int i = 0; i < 10000; i++) {
+                System.out.println("3---" + i);
+            }
+        }
         );
-        executorService.execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        System.out.println("t4开始运行");
-                                        for (int i = 0; i < 10000; i++) {
-                                            System.out.println("4---" + i);
-                                        }
-                                    }
-                                }
+        executorService.execute(() -> {
+            System.out.println("t4开始运行");
+            for (int i = 0; i < 10000; i++) {
+                System.out.println("4---" + i);
+            }
+        }
         );
         executorService.execute(new Runnable() {
                                     @Override
